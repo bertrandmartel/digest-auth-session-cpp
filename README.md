@@ -1,4 +1,4 @@
-# C++ digest authentication/session library for server
+# C++ Digest authentication / session library
 
 stateful authentication and session management for server using QT4
 
