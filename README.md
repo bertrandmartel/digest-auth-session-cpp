@@ -257,6 +257,12 @@ test_authentication_session.sh <algo> <session_type>
 
 ![test curl](https://raw.github.com/akinaru/digest-auth-session-cpp/master/test.png)
 
+<b>External libraries used</b>
+
+https://github.com/akinaru/http-streaming-decoder-cpp
+
+https://github.com/akinaru/socket-multiplatform/tree/master/server/server-socket/non-blocking
+
 <hr/>
 
 * Project is Qt4 compliant
