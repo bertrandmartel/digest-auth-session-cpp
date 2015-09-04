@@ -1,5 +1,7 @@
 # Digest authentication / session library
 
+http://akinaru.github.io/digest-auth-session-cpp
+
 stateful authentication and session management for server using QT4
 
 * digest authentication RFC2617 compliant
