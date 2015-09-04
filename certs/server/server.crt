@@ -1,0 +1,91 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=FR, ST=Paris, L=Paris, O=akinaru, OU=akinaru, CN=WebsocketServer/emailAddress=bmartel.fr@gmail.com
+        Validity
+            Not Before: May 16 02:50:46 2015 GMT
+            Not After : May 13 02:50:46 2025 GMT
+        Subject: C=FR, ST=Paris, O=akinaru, OU=akinaru, CN=websocket-main-server/emailAddress=bmartel.fr@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:cd:c5:7b:d4:38:97:73:78:24:7b:b0:31:de:09:
+                    f7:69:a6:67:47:76:d5:a3:6e:af:02:ed:d7:78:a8:
+                    81:78:43:6e:36:d1:38:76:1b:d3:9f:ae:5f:6d:a2:
+                    d1:76:a4:13:7d:88:22:57:21:b8:f2:1c:a2:13:7c:
+                    b9:8f:d4:5a:13:a5:f3:9b:e0:a7:31:cd:2f:bb:e4:
+                    97:f5:a5:c6:32:ec:53:26:68:03:a7:c8:90:42:3c:
+                    38:47:5f:cd:73:95:5c:10:f5:8b:b7:30:b2:eb:64:
+                    25:5e:42:0f:e5:19:31:f1:73:2a:77:a8:47:40:75:
+                    3b:c9:db:20:f9:0e:37:5f:6d:af:2d:7c:94:dc:4a:
+                    99:98:a0:8c:bd:42:8d:5d:cf:e5:78:3b:9e:79:c4:
+                    1a:24:b8:66:7d:b5:21:62:38:ed:db:0e:48:dc:a4:
+                    63:5c:97:38:3f:1b:55:e4:52:85:d0:ce:6c:a4:75:
+                    ad:12:21:29:8c:8b:80:98:ae:78:ae:cc:30:bd:cc:
+                    76:a7:03:49:b0:ad:b0:f4:d1:83:a2:17:4c:40:19:
+                    1e:11:70:d0:44:36:12:2b:b7:bf:36:72:12:31:42:
+                    63:eb:fc:c4:2d:3c:f7:61:c5:ec:9d:f2:4b:74:9d:
+                    71:e0:05:99:ec:e5:0c:6c:91:78:9a:05:88:2e:f8:
+                    dc:31
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            Netscape Comment: 
+                OpenSSL Generated Server Certificate
+            X509v3 Subject Key Identifier: 
+                65:85:D3:97:31:24:14:E0:0B:55:9C:61:D6:92:F4:AE:7E:41:03:C1
+            X509v3 Authority Key Identifier: 
+                keyid:01:4B:80:F7:50:D9:DE:15:03:50:78:97:BC:64:4B:7F:64:2A:22:B0
+                DirName:/C=FR/ST=Paris/L=Paris/O=akinaru/OU=akinaru/CN=WebsocketServer/emailAddress=bmartel.fr@gmail.com
+                serial:AA:6A:E3:A9:AE:A9:2D:5D
+
+    Signature Algorithm: md5WithRSAEncryption
+         2e:a5:d5:35:b9:1a:83:3b:8b:55:03:3d:f4:40:06:e6:34:8f:
+         73:96:02:3a:0c:40:05:f0:1d:3b:66:2c:2c:1d:ad:54:9f:01:
+         da:ae:17:d1:52:c8:41:f1:61:fb:d3:fa:8d:ac:94:52:75:6e:
+         3a:77:54:3c:b2:f3:fe:cc:19:e9:2b:b3:b1:fc:29:10:90:36:
+         9c:64:75:09:70:f5:41:b2:e6:c3:42:02:6d:f1:6f:66:ca:41:
+         fd:11:58:dd:58:ac:a2:87:0d:e5:8c:67:b4:62:97:40:6b:f8:
+         fb:6e:be:bd:7b:1d:bd:ec:91:d9:65:38:ed:1c:04:ef:ef:41:
+         11:9c:90:5c:86:5a:b0:e7:c1:58:03:aa:6b:fb:c4:c5:3f:85:
+         ca:c3:18:39:8f:86:90:da:bd:8b:19:7f:31:32:88:bf:3a:b5:
+         29:ab:ab:c7:8a:ef:b5:27:de:bf:f1:29:44:01:91:c3:ac:d8:
+         57:1a:d2:6e:30:98:db:59:33:f5:cf:31:20:e0:b3:75:9c:0c:
+         1e:18:16:46:d7:16:d1:ad:c9:a0:25:e8:07:b7:78:b9:1a:43:
+         66:f3:37:f1:26:a4:56:6d:a7:e1:24:bd:51:af:d5:d0:65:07:
+         36:58:8e:57:4d:ef:20:d3:02:62:76:4d:d6:64:5f:94:a6:9d:
+         34:0b:37:47
+-----BEGIN CERTIFICATE-----
+MIIE3DCCA8SgAwIBAgIBATANBgkqhkiG9w0BAQQFADCBkzELMAkGA1UEBhMCRlIx
+DjAMBgNVBAgTBVBhcmlzMQ4wDAYDVQQHEwVQYXJpczEQMA4GA1UEChMHYWtpbmFy
+dTEQMA4GA1UECxMHYWtpbmFydTEYMBYGA1UEAxMPV2Vic29ja2V0U2VydmVyMSYw
+JAYJKoZIhvcNAQkBFhdraXJ1YXpvbGRpazkyQGdtYWlsLmNvbTAeFw0xNTA1MTYw
+MjUwNDZaFw0yNTA1MTMwMjUwNDZaMIGJMQswCQYDVQQGEwJGUjEOMAwGA1UECBMF
+UGFyaXMxEDAOBgNVBAoTB2FraW5hcnUxEDAOBgNVBAsTB2FraW5hcnUxHjAcBgNV
+BAMTFXdlYnNvY2tldC1tYWluLXNlcnZlcjEmMCQGCSqGSIb3DQEJARYXa2lydWF6
+b2xkaWs5MkBnbWFpbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+AQDNxXvUOJdzeCR7sDHeCfdppmdHdtWjbq8C7dd4qIF4Q2420Th2G9Ofrl9totF2
+pBN9iCJXIbjyHKITfLmP1FoTpfOb4KcxzS+75Jf1pcYy7FMmaAOnyJBCPDhHX81z
+lVwQ9Yu3MLLrZCVeQg/lGTHxcyp3qEdAdTvJ2yD5Djdfba8tfJTcSpmYoIy9Qo1d
+z+V4O555xBokuGZ9tSFiOO3bDkjcpGNclzg/G1XkUoXQzmykda0SISmMi4CYrniu
+zDC9zHanA0mwrbD00YOiF0xAGR4RcNBENhIrt782chIxQmPr/MQtPPdhxeyd8kt0
+nXHgBZns5QxskXiaBYgu+NwxAgMBAAGjggFBMIIBPTAJBgNVHRMEAjAAMBEGCWCG
+SAGG+EIBAQQEAwIGQDAzBglghkgBhvhCAQ0EJhYkT3BlblNTTCBHZW5lcmF0ZWQg
+U2VydmVyIENlcnRpZmljYXRlMB0GA1UdDgQWBBRlhdOXMSQU4AtVnGHWkvSufkED
+wTCByAYDVR0jBIHAMIG9gBQBS4D3UNneFQNQeJe8ZEt/ZCoisKGBmaSBljCBkzEL
+MAkGA1UEBhMCRlIxDjAMBgNVBAgTBVBhcmlzMQ4wDAYDVQQHEwVQYXJpczEQMA4G
+A1UEChMHYWtpbmFydTEQMA4GA1UECxMHYWtpbmFydTEYMBYGA1UEAxMPV2Vic29j
+a2V0U2VydmVyMSYwJAYJKoZIhvcNAQkBFhdraXJ1YXpvbGRpazkyQGdtYWlsLmNv
+bYIJAKpq46muqS1dMA0GCSqGSIb3DQEBBAUAA4IBAQAupdU1uRqDO4tVAz30QAbm
+NI9zlgI6DEAF8B07ZiwsHa1UnwHarhfRUshB8WH70/qNrJRSdW46d1Q8svP+zBnp
+K7Ox/CkQkDacZHUJcPVBsubDQgJt8W9mykH9EVjdWKyihw3ljGe0YpdAa/j7br69
+ex297JHZZTjtHATv70ERnJBchlqw58FYA6pr+8TFP4XKwxg5j4aQ2r2LGX8xMoi/
+OrUpq6vHiu+1J96/8SlEAZHDrNhXGtJuMJjbWTP1zzEg4LN1nAweGBZG1xbRrcmg
+JegHt3i5GkNm8zfxJqRWbafhJL1Rr9XQZQc2WI5XTe8g0wJidk3WZF+Upp00CzdH
+-----END CERTIFICATE-----
