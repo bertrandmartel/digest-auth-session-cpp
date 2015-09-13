@@ -1,12 +1,14 @@
-# QT C++ digest authentication / session library for server
+# Digest authentication / session library
 
-stateful authentication and session management for server
+http://akinaru.github.io/digest-auth-session-cpp
+
+stateful authentication and session management for server using QT4
 
 * digest authentication RFC2617 compliant
 * digest session management (MD5-SESS and SHA1-SESS)
 * cookie session management (independant from digest)
 
-<h3>1) Usage</h3>
+<h3>1 - Usage</h3>
 
 Instanciate digest manager : 
 
@@ -93,7 +95,7 @@ Output `DigestInfo` is composed of :
 * `int status_code` which is http status code to return to client (with your specific page referred to this status code)
 * `std::map<std::string,std::string> * headers` : featuring headers to add to client response for authentication/session management (content-type and content-length is not included in these headers)
 
-<h3>2) Cookie session key</h3>
+<h3>2 - Cookie session key</h3>
 
 Cookie session key is very basic. It consists of a random string with a specific lifetime from the moment user has successfully authenticated with digest authentication method.
 
@@ -105,7 +107,7 @@ Cookie session key is very basic. It consists of a random string with a specific
 
 * Cookie session is not protected by replay attack contrary to digest session. See 5) for security considerations
 
-<h3>3) Digest session key</h3>
+<h3>3 - Digest session key</h3>
 
 Digest session key uses directly Digest protocol to generate session key composed of HASH(HASH("username:realm:password"):nonce:cnonce) according to RFC2617 way. HASH refer to MD5 or SHA1 depending if you store MD5 or SHA1 hash of "username:realm:password" in your storage/database (see part 5 for security consideration regarding database and digest authentication).
 
@@ -119,7 +121,7 @@ Digest session key uses directly Digest protocol to generate session key compose
 
 * Digest session key is protected against replay attack
 
-<h3>4) Example</h3>
+<h3>4 - Example</h3>
 
 I have here a callback giving an incoming http request from client with an `Ihttpframe` object featuring http method, uri, headers, body etc...
 The following exemple will process digest only for a GET request on /login uri and display either 401 page, 500 page or 200 page according to processing result :
@@ -203,7 +205,7 @@ void ClientSocketHandler::onHttpRequestReceived(IHttpClient &client,Ihttpframe *
 
 A complete example is given in `digest-auth-session-test` folder project.
 
-<h3>5) Security consideration</h3>
+<h3>5 - Security consideration</h3>
 
 * Digest authentication is not fully secured protocol, you MUST use SSL/TLS protocol to ensure security of your data.
 
@@ -219,7 +221,7 @@ A complete example is given in `digest-auth-session-test` folder project.
 
 <hr/>
 
-<h3>6) Testing project with curl</h3>
+<h3>6 - Testing project with curl</h3>
 
 A complete test case is provided in a Bash script using curl named `test_authentication_session.sh`
 
@@ -254,6 +256,12 @@ test_authentication_session.sh <algo> <session_type>
 ```
 
 ![test curl](https://raw.github.com/akinaru/digest-auth-session-cpp/master/test.png)
+
+<b>External libraries used</b>
+
+https://github.com/akinaru/http-streaming-decoder-cpp
+
+https://github.com/akinaru/socket-multiplatform/tree/master/server/server-socket/non-blocking
 
 <hr/>
 
