@@ -120,6 +120,14 @@ class DigestManager{
         std::map<std::string,std::string> splitHeader(std::string header,char delim);
 
         /**
+         * @brief remove_session_for_headers
+         *      Remove a session (cookie or digest)
+         * @param headers
+         * @return
+         */
+        int remove_session_for_headers(std::map<std::string,std::string> *headers);
+
+        /**
          * @brief DigestManager::generateHandshakeProcess
          *      build digest authentication request
          * @param host

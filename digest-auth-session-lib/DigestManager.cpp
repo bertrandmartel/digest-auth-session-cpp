@@ -155,6 +155,68 @@ int DigestManager::get_max_session_time(){
 }
 
 /**
+ * @brief remove_session_for_headers
+ *      Remove a session (cookie or digest)
+ * @param headers
+ * @return
+ */
+int DigestManager::remove_session_for_headers(std::map<std::string,std::string> *headers){
+
+    std::map<std::string,std::string> map_val=*headers;
+
+    if (session_t==COOKIE){
+        std::string currentHsid="";
+
+        if (map_val.find("Cookie")!=map_val.end()){
+            currentHsid = getAuthenticationCookieField(headers->at("Cookie"));
+        }
+
+        if (strcmp(currentHsid.data(),"")!=0){
+
+            if (session_map.find(currentHsid)!=session_map.end()) {
+                session_map.erase(currentHsid);
+                cout << "HSID successfully removed"<<endl;
+                return 200;
+            }
+            else{
+                cout << "HDSID header not registered" << endl;
+            }
+        }
+        else{
+            cout << "no HDSID header received" << endl;
+        }
+    } else {
+
+        if (map_val.find("Authorization")!=map_val.end()){
+
+            std::string authorizationHeader=headers->at("Authorization");
+
+            map<string,string> subheaderList = splitHeader(authorizationHeader,',');
+
+            if (subheaderList.find("opaque")==subheaderList.end()){
+                cerr<< "No opaque subheader" << endl;
+                return 500;
+            }
+
+            std::string opaque = subheaderList["opaque"];
+
+            //check if peer address has an entry in map
+            if (nonce_map.find(opaque)==nonce_map.end()){
+                nonce_map.erase(opaque);
+                cout << "Opaque successfully removed"<<endl;
+                return 200;
+            }else{
+                cerr << "Opaque not found in list" << endl;
+            }
+        }else{
+            cerr << "No authentication headers" << endl;
+        }
+    }
+
+    return 500;
+}
+
+/**
  * called when an http response has been received from client
  *
  * @param client
@@ -166,8 +228,7 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
 
     std::string realm ="akinaru_realm";
 
-    std::map<std::string,std::string> *map_ptr= headers;
-    std::map<std::string,std::string> map_val=*map_ptr;
+    std::map<std::string,std::string> map_val=*headers;
 
     //############################################################################################
 
