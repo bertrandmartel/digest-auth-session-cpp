@@ -84,10 +84,12 @@ class DigestManager{
          *      http uri
          * @param headers
          *      http headers
+         * @param realm
+         *      chosen realm for given uri
          * @return
          *      DigestInfo
          */
-        DigestInfo process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers);
+        DigestInfo process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers,std::string realm);
 
         /**
          * @brief DigestManager::remove_expired_nonces

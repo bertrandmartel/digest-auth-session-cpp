@@ -162,6 +162,8 @@ int DigestManager::get_max_session_time(){
  */
 int DigestManager::remove_session_for_headers(std::map<std::string,std::string> *headers){
 
+    cout << "remove session id " << endl;
+
     std::map<std::string,std::string> map_val=*headers;
 
     if (session_t==COOKIE){
@@ -224,9 +226,7 @@ int DigestManager::remove_session_for_headers(std::map<std::string,std::string> 
  * @param message
  * 		message delivered
  */
-DigestInfo DigestManager::process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers){
-
-    std::string realm ="akinaru_realm";
+DigestInfo DigestManager::process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers,std::string realm){
 
     std::map<std::string,std::string> map_val=*headers;
 
@@ -271,7 +271,7 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
         }
 
         cout << "[DIGEST MANAGER] PROCESS RESPONSE " << endl;
-        return processDigestResponse(authentication,cookie,realm,"GET","/login");
+        return processDigestResponse(authentication,cookie,realm,"GET",uri);
     }
 
     //process digest handshake if not authenticated
@@ -484,12 +484,11 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
     //    + "Content-Type: "     + "text/html"              + "\r\n";
     //"Content-Length: "   + contentLength.str()      + "\r\n";
 
-
     if (session_t==COOKIE){
 
         //headers_ret["Set-Cookie"]="authentication=running";
 
-        std::string cookie=QString("").toStdString() + "HSID=" + clientId + "; Domain=" + serverIp + "; Path=/; HttpOnly";
+        std::string cookie=QString("").toStdString() + "HSID=" + clientId + "; Domain=" + serverIp + "; Path=/;";
 
         headers_ret["Set-Cookie"]=cookie;
 

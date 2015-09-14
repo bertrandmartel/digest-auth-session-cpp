@@ -89,13 +89,13 @@ void ClientSocketHandler::onHttpResponseReceived(IHttpClient &client,Ihttpframe 
  * @param message
  * 		message delivered
  */
-void ClientSocketHandler::onHttpRequestReceived(IHttpClient &client,Ihttpframe * frame,std::string peer_address)
-{
+void ClientSocketHandler::onHttpRequestReceived(IHttpClient &client,Ihttpframe * frame,std::string peer_address){
+
     cout << "Http request received for client " << peer_address << endl;
 
-    if (strcmp(frame->getMethod().data(),"GET")==0 && strcmp(frame->getUri().data(),"/login")==0)
-    {
-        DigestInfo digest_info = digest_manager->process_digest(frame->getMethod(),frame->getUri(),frame->getHeaders());
+    if (strcmp(frame->getMethod().data(),"GET")==0 && strcmp(frame->getUri().data(),"/login")==0){
+
+        DigestInfo digest_info = digest_manager->process_digest(frame->getMethod(),frame->getUri(),frame->getHeaders(),"akinaru_realm");
 
         cout << "Receive digest response with status code : " << digest_info.get_status_code() << endl;
 
