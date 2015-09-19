@@ -54,12 +54,12 @@ DigestManager::DigestManager(){
     show_algorithm=true;
 
     //default algorithm is MD5
-    algorithm=SHA1;
+    algorithm=ALGO_SHA1;
 
     //nonce timeout default is 10 minutes
     nonce_timeout_millis=10*60*1000;
 
-    session_t=DIGEST;
+    session_t=SESSION_DIGEST;
 
     session_time_seconds=3600;
 }
@@ -166,7 +166,7 @@ int DigestManager::remove_session_for_headers(std::map<std::string,std::string> 
 
     std::map<std::string,std::string> map_val=*headers;
 
-    if (session_t==COOKIE){
+    if (session_t==SESSION_COOKIE){
         std::string currentHsid="";
 
         if (map_val.find("Cookie")!=map_val.end()){
@@ -234,7 +234,7 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
 
     bool authenticated = false;
 
-    if (session_t==COOKIE){
+    if (session_t==SESSION_COOKIE){
         std::string currentHsid="";
 
         if (map_val.find("Cookie")!=map_val.end()){
@@ -425,7 +425,7 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
 
     std::string clientId = "";
 
-    if (session_t==COOKIE){
+    if (session_t==SESSION_COOKIE){
 
         clientId = generateRandomNum(62);
 
@@ -466,9 +466,9 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
 
         std::string algo_str = "";
 
-        if (algorithm==MD5)
+        if (algorithm==ALGO_MD5)
             algo_str="MD5";
-        else if (algorithm==SHA1)
+        else if (algorithm==ALGO_SHA1)
             algo_str="SHA1";
 
         digest_header+= QString("").toStdString() + ",algorithm=\"" + algo_str  + "\"";
@@ -484,7 +484,7 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
     //    + "Content-Type: "     + "text/html"              + "\r\n";
     //"Content-Length: "   + contentLength.str()      + "\r\n";
 
-    if (session_t==COOKIE){
+    if (session_t==SESSION_COOKIE){
 
         //headers_ret["Set-Cookie"]="authentication=running";
 
@@ -679,35 +679,35 @@ DigestInfo DigestManager::processDigestResponse(std::string authorizationHeader,
             return digest_response;
         }
 
-        if (session_t==DIGEST){
+        if (session_t==SESSION_DIGEST){
             hash1+=QString("").toStdString() + ":" + nonce_map[opaque].nonce + ":" + cnonce;
         }
 
         std::string hash2="";
-        if (algorithm==MD5)
+        if (algorithm==ALGO_MD5)
             hash2 = QString(QCryptographicHash::hash(hash2Str.data(), QCryptographicHash::Md5).toHex()).toStdString();
-        else if (algorithm==SHA1)
+        else if (algorithm==ALGO_SHA1)
             hash2 = QString(QCryptographicHash::hash(hash2Str.data(), QCryptographicHash::Sha1).toHex()).toStdString();
 
         std::string hash3Str = QString(hash1.data()).toLower().toStdString() + ":" +
                 nonce_map[opaque].nonce  + ":" + nonce_count_str + ":" + cnonce + ":" + "auth-int" + ":" + QString(hash2.data()).toLower().toStdString();
 
         std::string hash3 ="";
-        if (algorithm==MD5)
+        if (algorithm==ALGO_MD5)
             hash3 = QString(QCryptographicHash::hash(hash3Str.data(), QCryptographicHash::Md5).toHex()).toStdString();
-        else if (algorithm==SHA1)
+        else if (algorithm==ALGO_SHA1)
             hash3 = QString(QCryptographicHash::hash(hash3Str.data(), QCryptographicHash::Sha1).toHex()).toStdString();
 
         std::string clientResponse = subheaderList["response"];
 
-        if (session_t==COOKIE) {
+        if (session_t==SESSION_COOKIE) {
 
             if (strcmp(cookieHeader.data(),"")!=0) {
 
                 map<string,string> cookiesList   = splitHeader(cookieHeader       ,';');
 
                 //check cookie header properties
-                if (session_t==COOKIE && cookiesList.find("HSID")==subheaderList.end()){
+                if (session_t==SESSION_COOKIE && cookiesList.find("HSID")==subheaderList.end()){
                     cout << "HSID property was not found in Cookie header response" << endl;
                     DigestInfo digest_response(401,headers_ret);
                     return digest_response;

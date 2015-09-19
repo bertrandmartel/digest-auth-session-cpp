@@ -33,13 +33,13 @@
 #define DIGESTSTRUCT_H
 
 enum digest_algorithm{
-    MD5,
-    SHA1
+    ALGO_MD5,
+    ALGO_SHA1
 };
 
 enum session_type{
-    COOKIE,
-    DIGEST
+    SESSION_COOKIE,
+    SESSION_DIGEST
 };
 
 #endif // DIGESTSTRUCT_H

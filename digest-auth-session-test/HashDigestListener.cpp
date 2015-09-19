@@ -63,10 +63,10 @@ std::string HashDigestListener::get_hash_for_username(std::string username,std::
 
     std::string hash2="";
 
-    if (algo==MD5){
+    if (algo==ALGO_MD5){
         hash2 = QString(QCryptographicHash::hash(hash2Str.data(), QCryptographicHash::Md5).toHex()).toStdString();
     }
-    else if (algo==SHA1){
+    else if (algo==ALGO_SHA1){
         hash2 = QString(QCryptographicHash::hash(hash2Str.data(), QCryptographicHash::Sha1).toHex()).toStdString();
     }
 

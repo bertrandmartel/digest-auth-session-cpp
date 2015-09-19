@@ -19,8 +19,8 @@ DigestManager digest_manager;
 
 Set the algorithm and session type you want to use. For instance :
 ```
-digest_manager.set_digest_algorithm(SHA1);
-digest_manager.set_session_type(DIGEST);
+digest_manager.set_digest_algorithm(ALGO_SHA1);
+digest_manager.set_session_type(SESSION_DIGEST);
 
 ```
 
@@ -250,8 +250,8 @@ Usage is :
 
 ```
 test_authentication_session.sh <algo> <session_type>
-<algo>          : MD5    | SHA1
-<session_type>  : COOKIE | DIGEST
+<algo>          : ALGO_MD5       | ALGO_SHA1
+<session_type>  : SESSION_COOKIE | SESSION_DIGEST
 
 ```
 

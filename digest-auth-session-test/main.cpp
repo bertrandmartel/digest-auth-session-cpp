@@ -77,8 +77,8 @@ int main(int argc, char *argv[]){
 
     HashDigestListener digest_listener;
     DigestManager digest_manager;
-    digest_manager.set_digest_algorithm(SHA1);
-    digest_manager.set_session_type(DIGEST);
+    digest_manager.set_digest_algorithm(ALGO_SHA1);
+    digest_manager.set_session_type(SESSION_DIGEST);
 
     digest_manager.set_digest_listener(&digest_listener);
 
