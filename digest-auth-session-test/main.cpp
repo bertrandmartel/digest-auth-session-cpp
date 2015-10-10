@@ -53,8 +53,25 @@ static bool useSSL = false;
 #define CA_CERTS          ROOT_FOLDER "/digest-auth-session-cpp/certs/ca.crt"
 #define PRIVATE_CERT_PASS "12345"
 
+struct CleanExit{
+
+    CleanExit() {
+
+        signal(SIGINT, &CleanExit::exitQt);
+        signal(SIGTERM, &CleanExit::exitQt);
+
+    }
+
+    static void exitQt(int sig) {
+
+        QCoreApplication::exit(0);
+
+    }
+};
+
 int main(int argc, char *argv[]){
 
+    CleanExit cleanExit;
     QCoreApplication a(argc, argv);
 
 

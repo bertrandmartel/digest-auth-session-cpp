@@ -74,7 +74,7 @@ public:
      * @return
      *		0 if success -1 if error
      */
-    int sendHttpMessage(std::string message);
+    void sendHttpMessage(std::string message);
 
     /**
      * @brief setSocketClient
@@ -83,6 +83,14 @@ public:
      *      client socket
      */
     void setSocketClient(QTcpSocket * clientSocket);
+
+    void writeStringToSocket(std::string message);
+
+    void writeByteArrayToSocket(const QByteArray array);
+
+    void flush();
+
+    void writeCharToSocket(char * data,int size);
 
 private:
 

@@ -29,10 +29,6 @@ HEADERS += \
     DigestManager.h \
     Digestinfo.h
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/ -lhttpServer
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/ -lhttpServer
-else:unix: LIBS += -L$$PWD/libs/ -lhttpServer
-
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/ -lhttpdecoder
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/ -lhttpdecoder
 else:unix: LIBS += -L$$PWD/libs/ -lhttpdecoder

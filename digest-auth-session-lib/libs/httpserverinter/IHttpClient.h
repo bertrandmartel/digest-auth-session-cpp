@@ -32,6 +32,7 @@
 #ifndef IHTTPCLIENT_H
 #define IHTTPCLIENT_H
 #include "string"
+#include "QByteArray"
 
 class IHttpClient
 {
@@ -45,7 +46,16 @@ public :
      * @return
      *		0 if success -1 if error
      */
-    virtual int sendHttpMessage(std::string message)= 0;
+    virtual void sendHttpMessage(std::string message)= 0;
+
+    virtual void writeStringToSocket(std::string message)=0;
+
+    virtual void writeByteArrayToSocket(const QByteArray array)=0;
+
+    virtual void flush()=0;
+
+    virtual void writeCharToSocket(char * data,int size)=0;
+
 };
 
 #endif // IHTTPCLIENT_H

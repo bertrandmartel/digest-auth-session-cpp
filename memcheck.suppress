@@ -1,0 +1,30 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwj
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   fun:_ZN8QLibrary21setFileNameAndVersionERK7QStringS2_
+   fun:_ZN8QLibraryC1ERK7QStringS2_P7QObject
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   fun:_ZN14QLocalePrivate19updateSystemPrivateEv
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   fun:_ZN7QLocaleC1Ev
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   fun:_ZN9QFileInfoC1ERK7QString
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwj
+   obj:/usr/lib/i386-linux-gnu/libQtCore.so.4.8.4
+   fun:_ZN8QLibrary21setFileNameAndVersionERK7QStringS2_
+   obj:/usr/lib/i386-linux-gnu/libQtNetwork.so.4.8.4
+   obj:/usr/lib/i386-linux-gnu/libQtNetwork.so.4.8.4
+   obj:/usr/lib/i386-linux-gnu/libQtNetwork.so.4.8.4
+   fun:_ZN15QSslCertificateC1ERK10QByteArrayN4QSsl14EncodingFormatE
+   fun:_ZN10HttpServerC1EP7QObject
+}

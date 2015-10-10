@@ -30,21 +30,7 @@ public:
      * @return
      *      vector of splitted string
      */
-    static std::vector<std::string> split(const std::string &s, char delim);
-
-    /**
-     * @brief split
-     *      split a string with a character delimiter
-     * @param s
-     *      string to split
-     * @param delim
-     *      character delimiter
-     * @param elems
-     *      the same as vector list returned
-     * @return
-     *      vector of splitted string
-     */
-    static std::vector<std::string> split(const std::string &s, char delim, std::vector<std::string> &elems);
+    static std::vector<std::string> split(std::string s, char delim);
 
     /**
      * @brief isNum

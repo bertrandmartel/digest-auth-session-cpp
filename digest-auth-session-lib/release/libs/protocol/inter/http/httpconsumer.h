@@ -1,4 +1,27 @@
 /**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Bertrand Martel
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+/**
     httpconsumer.cpp
     HTTP Consumer client
     This object permits to store http life cycle into your own design and monitor your parsing in a blocking or non-blocking socket configuration
@@ -14,6 +37,7 @@
 #include "map"
 #include "IhttpFrame.h"
 #include "vector"
+#include "httpframe.h"
 
 /**
  * @brief httpConsumer::httpConsumer
@@ -142,21 +166,21 @@ class httpconsumer
          *      retrieve http frame object list
          * @return
          */
-        std::vector<Ihttpframe*> getHttpFrameList();
+        std::vector<httpframe> getHttpFrameList();
 
         /**
          * @brief httpConsumer::addNewHttpFrame
          *      add a new http frame in the list
          * @param frame
          */
-        void addNewHttpFrame(Ihttpframe * frame);
+        void addNewHttpFrame(httpframe frame);
 
         /**
          * @brief getCurrentHttpFrame
          *      retrieve current http frame object
          * @return
          */
-        Ihttpframe* getCurrentHttpFrame();
+        httpframe *getCurrentHttpFrame();
 
         /**
          * @brief setHttpFrameList
@@ -164,7 +188,7 @@ class httpconsumer
          * @param list
          *      pointer to vector of IHttp frames
          */
-        void setHttpFrameList(std::vector<Ihttpframe*> *list);
+        void setHttpFrameList(std::vector<httpframe> list);
 
     private:
 
@@ -214,7 +238,7 @@ class httpconsumer
          * @brief httpFrameList
          *      list of http frames
          */
-        std::vector<Ihttpframe*> httpFrameList;
+        std::vector<httpframe> httpFrameList;
 
 };
 

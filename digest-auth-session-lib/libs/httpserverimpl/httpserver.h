@@ -36,7 +36,6 @@
 #ifndef HTTPSERVER_H
 #define HTTPSERVER_H
 
-#include "httpserver_global.h"
 #include <QtNetwork>
 #include <QObject>
 #include <QTcpServer>
@@ -50,7 +49,7 @@
 #include "QSslKey"
 #include "httpserverinter/IClientEventListener.h"
 #include <QtCore/QQueue>
-
+#include "protocol/inter/http/httpframe.h"
 /**
  * @brief The HttpServer class
  *      Http server main process class
@@ -61,7 +60,7 @@
  *  <li>manage process of incoming data from client socket</li>
  * </ul>
  */
-class HTTPSERVERSHARED_EXPORT HttpServer: public QTcpServer
+class HttpServer: public QTcpServer
 {
 
     Q_OBJECT
@@ -129,7 +128,7 @@ public:
      *      list of http frames
      * @return
      */
-    bool containsHttpProcessedFrames(std::vector<Ihttpframe*> frameList);
+    bool containsHttpProcessedFrames(std::vector<httpframe> frameList);
 
     /**
      * @brief HttpServer::set_debug

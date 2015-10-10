@@ -31,7 +31,6 @@
 #include "DigestManager.h"
 #include "Digestinfo.h"
 
-#include "httpserverinter/IHttpClient.h"
 #include "iostream"
 #include "sstream"
 #include "string.h"
@@ -226,9 +225,7 @@ int DigestManager::remove_session_for_headers(std::map<std::string,std::string> 
  * @param message
  * 		message delivered
  */
-DigestInfo DigestManager::process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers,std::string realm){
-
-    std::map<std::string,std::string> map_val=*headers;
+DigestInfo DigestManager::process_digest(std::string method,std::string uri,std::map<std::string,std::string> headers,std::string realm){
 
     //############################################################################################
 
@@ -237,8 +234,8 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
     if (session_t==SESSION_COOKIE){
         std::string currentHsid="";
 
-        if (map_val.find("Cookie")!=map_val.end()){
-            currentHsid = getAuthenticationCookieField(headers->at("Cookie"));
+        if (headers.find("Cookie")!=headers.end()){
+            currentHsid = getAuthenticationCookieField(headers.at("Cookie"));
         }
 
         if (strcmp(currentHsid.data(),"")!=0){
@@ -261,13 +258,13 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
     }
 
     //proces digest response if Authroization and Cookie header are present
-    if (!authenticated && map_val.find("Authorization")!=map_val.end()){
+    if (!authenticated && headers.find("Authorization")!=headers.end()){
 
-        std::string authentication=headers->at("Authorization");
+        std::string authentication=headers.at("Authorization");
         std::string cookie="";
 
-        if (map_val.find("Cookie")!=map_val.end()){
-            cookie=headers->at("Cookie");
+        if (headers.find("Cookie")!=headers.end()){
+            cookie=headers.at("Cookie");
         }
 
         cout << "[DIGEST MANAGER] PROCESS RESPONSE " << endl;
@@ -277,9 +274,9 @@ DigestInfo DigestManager::process_digest(std::string method,std::string uri,std:
     //process digest handshake if not authenticated
     if (!authenticated){
 
-        if (headers->count("Host")>0){
+        if (headers.count("Host")>0){
 
-            std::string host=headers->at("Host");
+            std::string host=headers.at("Host");
 
             cout << "[DIGEST MANAGER] PROCESS REQUEST" << endl;
 
@@ -400,9 +397,6 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
     //generate nonce (algorithm used for generating nonce is not part of RFC)
     std::string nonce_value = QString(QCryptographicHash::hash(randomStr.data(), QCryptographicHash::Sha1).toHex()).toStdString();
 
-    char *nonce_cstr = new char[nonce_value.length() + 1];
-    strcpy(nonce_cstr, nonce_value.c_str());
-
     std::string opaque = generateRandomNum(62);
 
     //to be sure opaque is unique
@@ -413,11 +407,11 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
     QDateTime current_date = QDateTime::currentDateTime();
 
     nonce nonce_item = {
-        nonce_cstr,
+        nonce_value,
         nonce_timestamp+nonce_timeout_millis,
         1,
         false,
-        0
+        ""
     };
 
     //store nonce in map for keeping authentication information for this peer
@@ -437,10 +431,7 @@ DigestInfo DigestManager::generateHandshakeProcess(std::string host,std::string 
         session_map[clientId].session_start_date=current_date;
         session_map[clientId].validity=false;
 
-        char *client_id_cstr = new char[clientId.length() + 1];
-        strcpy(client_id_cstr, clientId.c_str());
-
-        nonce_map[opaque].session_id=client_id_cstr;
+        nonce_map[opaque].session_id=clientId;
     }
 
     //std::string content = unauthorized_page;
@@ -717,7 +708,7 @@ DigestInfo DigestManager::processDigestResponse(std::string authorizationHeader,
 
                 if (session_map.find(hsid)!=session_map.end()){
 
-                    if (strcmp(nonce_map[opaque].session_id,hsid.data())==0){
+                    if (strcmp(nonce_map[opaque].session_id.data(),hsid.data())==0){
 
                         cout << "Digest client recognized. Checking for response..." << endl;
 

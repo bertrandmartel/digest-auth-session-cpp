@@ -40,11 +40,11 @@
 
 /* nonce structure used to store stateful data about nonce creation / lifetime */
 typedef struct {
-    char * nonce; // nonce value
+    std::string nonce; // nonce value
     unsigned long expiring_date; // expiring date in millisecond since 1970
     unsigned int nonce_count; // nonce server count
     bool stale; // true if former nonce was rejected due to expiration (NOT IMPLEMENTED FOR NOW)
-    char * session_id; // session id (only for COOKIE session type => this must match an entry in session structure below for this type of session)
+    std::string session_id; // session id (only for COOKIE session type => this must match an entry in session structure below for this type of session)
 } nonce;
 
 /* session structure used to store stateful data about session entry for COOKIE session type*/
@@ -89,7 +89,7 @@ class DigestManager{
          * @return
          *      DigestInfo
          */
-        DigestInfo process_digest(std::string method,std::string uri,std::map<std::string,std::string> * headers,std::string realm);
+        DigestInfo process_digest(std::string method,std::string uri,std::map<std::string,std::string> headers,std::string realm);
 
         /**
          * @brief DigestManager::remove_expired_nonces
