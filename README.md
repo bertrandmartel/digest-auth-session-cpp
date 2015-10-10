@@ -250,12 +250,22 @@ Usage is :
 
 ```
 test_authentication_session.sh <algo> <session_type>
-<algo>          : ALGO_MD5       | ALGO_SHA1
-<session_type>  : SESSION_COOKIE | SESSION_DIGEST
+<algo>          : MD5    | SHA1
+<session_type>  : COOKIE | DIGEST
 
 ```
 
 ![test curl](https://raw.github.com/akinaru/digest-auth-session-cpp/master/test.png)
+
+<hr/>
+
+* valgrind memcheck
+
+```
+cd ./digest-auth-session-test/release/
+valgrind --tool=memcheck --leak-check=full  --suppressions=../../memcheck.suppress  ./digest-auth-session-test
+
+```
 
 <b>External libraries used</b>
 
