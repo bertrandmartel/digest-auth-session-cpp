@@ -1,6 +1,6 @@
 # Digest authentication / session library
 
-http://akinaru.github.io/digest-auth-session-cpp
+http://bertrandmartel.github.io/digest-auth-session-cpp
 
 stateful authentication and session management for server using QT4
 
@@ -255,7 +255,7 @@ test_authentication_session.sh <algo> <session_type>
 
 ```
 
-![test curl](https://raw.github.com/akinaru/digest-auth-session-cpp/master/test.png)
+![test curl](https://raw.github.com/bertrandmartel/digest-auth-session-cpp/master/test.png)
 
 <hr/>
 
@@ -269,9 +269,9 @@ valgrind --tool=memcheck --leak-check=full  --suppressions=../../memcheck.suppre
 
 <b>External libraries used</b>
 
-https://github.com/akinaru/http-streaming-decoder-cpp
+https://github.com/bertrandmartel/http-streaming-decoder-cpp
 
-https://github.com/akinaru/socket-multiplatform/tree/master/server/server-socket/non-blocking
+https://github.com/bertrandmartel/socket-multiplatform/tree/master/server/server-socket/non-blocking
 
 <hr/>
 
